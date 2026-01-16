@@ -2,23 +2,237 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <title>Terms of Service</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Пользовательское соглашение — В Эфире</title>
+  <style>
+    :root {
+      --bg: #0b0b10;
+      --card: rgba(255,255,255,0.06);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.70);
+      --muted2: rgba(255,255,255,0.55);
+      --line: rgba(255,255,255,0.12);
+      --accent: rgba(168,85,247,0.95);
+      --shadow: 0 10px 30px rgba(0,0,0,0.35);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 700px at 20% 0%, rgba(168,85,247,0.22), transparent 55%),
+                  radial-gradient(900px 600px at 90% 10%, rgba(255,77,77,0.16), transparent 55%),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    .wrap {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 40px 18px 60px;
+    }
+
+    header { margin-bottom: 18px; }
+
+    .badge {
+      display: inline-block;
+      padding: 6px 10px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.04);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    h1 {
+      margin: 12px 0 8px;
+      font-size: 32px;
+      letter-spacing: -0.02em;
+    }
+
+    .updated {
+      color: var(--muted);
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .card {
+      margin-top: 18px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 20px 18px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--line);
+      margin: 18px 0;
+    }
+
+    h2 {
+      font-size: 20px;
+      margin: 0 0 10px;
+      letter-spacing: -0.01em;
+    }
+
+    p { margin: 0 0 10px; color: var(--text); }
+    .muted { color: var(--muted); }
+    .muted2 { color: var(--muted2); }
+
+    ul {
+      margin: 8px 0 10px 18px;
+      padding: 0;
+      color: var(--text);
+    }
+    li { margin: 6px 0; }
+
+    a {
+      color: rgba(255,255,255,0.92);
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(255,255,255,0.35);
+    }
+    a:hover { border-bottom-color: var(--accent); }
+
+    footer {
+      margin-top: 18px;
+      color: var(--muted2);
+      font-size: 13px;
+    }
+
+    .note {
+      padding: 12px 12px;
+      border-left: 3px solid var(--accent);
+      background: rgba(168,85,247,0.10);
+      border-radius: 10px;
+      color: var(--muted);
+      margin-top: 12px;
+    }
+
+    @media (max-width: 520px) {
+      h1 { font-size: 26px; }
+      .wrap { padding-top: 28px; }
+      .card { padding: 16px 14px; }
+    }
+  </style>
 </head>
+
 <body>
-  <h1>Пользовательское соглашение</h1>
+  <div class="wrap">
+    <header>
+      <span class="badge">В Эфире • Документ</span>
+      <h1>Пользовательское соглашение</h1>
+      <p class="updated">Дата последнего обновления: <strong>15 января 2026 г.</strong></p>
+    </header>
 
-  <p>Используя данное приложение, вы соглашаетесь с настоящими условиями использования.</p>
+    <div class="card">
+      <p class="muted">
+        Настоящее Пользовательское соглашение (далее — «Соглашение») регулирует использование приложения «В Эфире».
+      </p>
+      <p class="muted">
+        Используя Приложение, вы подтверждаете, что ознакомились и согласны с условиями данного Соглашения.
+      </p>
 
-  <h2>Использование приложения</h2>
-  <p>Приложение предоставляется «как есть». Разработчик не несёт ответственности за возможные сбои или потери данных.</p>
+      <div class="divider"></div>
 
-  <h2>Покупки</h2>
-  <p>Некоторые функции могут предоставляться за плату через покупки в приложении.</p>
+      <h2>1. Описание сервиса</h2>
+      <p>Приложение предоставляет инструменты для:</p>
+      <ul>
+        <li>симуляции прямых эфиров</li>
+        <li>тренировки навыков выступления</li>
+        <li>работы с визуальной и текстовой активностью в эфире</li>
+      </ul>
+      <p class="muted">
+        Приложение не гарантирует рост аудитории, популярность или коммерческий успех.
+      </p>
 
-  <h2>Изменения условий</h2>
-  <p>Условия могут быть обновлены без предварительного уведомления.</p>
+      <div class="divider"></div>
 
-  <h2>Контакты</h2>
-  <p>По вопросам использования приложения вы можете связаться с нами по электронной почте: antonalexeevich@yahoo.com</p>
+      <h2>2. Использование приложения</h2>
+      <p>Пользователь обязуется:</p>
+      <ul>
+        <li>использовать Приложение в законных целях</li>
+        <li>не нарушать права третьих лиц</li>
+        <li>не использовать Приложение для противоправных действий</li>
+      </ul>
+
+      <p>Запрещается:</p>
+      <ul>
+        <li>попытки взлома или вмешательства в работу Приложения</li>
+        <li>использование автоматизированных средств без разрешения</li>
+        <li>распространение вредоносного ПО</li>
+      </ul>
+
+      <div class="divider"></div>
+
+      <h2>3. Контент пользователя</h2>
+      <p>Пользователь несёт полную ответственность за:</p>
+      <ul>
+        <li>вводимые им тексты</li>
+        <li>действия, совершаемые в эфире</li>
+      </ul>
+      <p class="muted">
+        Приложение не осуществляет публичное распространение пользовательского контента без его участия.
+      </p>
+
+      <div class="divider"></div>
+
+      <h2>4. Платные функции</h2>
+      <p>В Приложении могут быть доступны как разовые покупки, так и подписка.</p>
+      <ul>
+      <li>Разовые покупки предоставляют доступ к отдельным функциям или возможностям</li>
+      <li>Подписка предоставляет расширенный доступ к функционалу Приложения на период её действия</li>
+      <li>Все платежи обрабатываются через систему Apple In-App Purchases</li>
+      <li>Мы не имеем доступа к данным вашей банковской карты</li>
+      <li>Возвраты и списания регулируются правилами App Store</li>
+      <li>Управление и отмена подписки осуществляются пользователем через настройки Apple ID</li>
+      </ul>
+
+      <div class="divider"></div>
+
+      <h2>5. Ограничение ответственности</h2>
+      <p>Приложение предоставляется «как есть».</p>
+      <p>Мы не несем ответственности за:</p>
+      <ul>
+        <li>прямые или косвенные убытки</li>
+        <li>потерю данных</li>
+        <li>ожидания, не соответствующие функционалу Приложения</li>
+      </ul>
+
+      <div class="divider"></div>
+
+      <h2>6. Прекращение использования</h2>
+      <p>
+        Пользователь может прекратить использование Приложения в любой момент, удалив его с устройства.
+      </p>
+      <p class="muted">
+        Мы оставляем за собой право ограничить доступ при нарушении условий Соглашения.
+      </p>
+
+      <div class="divider"></div>
+
+      <h2>7. Изменения условий</h2>
+      <p class="muted">
+        Мы можем изменять условия Соглашения. Продолжение использования Приложения означает согласие с обновлёнными условиями.
+      </p>
+
+      <div class="divider"></div>
+
+      <h2>8. Контакты</h2>
+      <p class="muted">По вопросам, связанным с условиями использования:</p>
+      <p>
+        Email:
+        <a href="mailto:antalexeevich@yahoo.com">antalexeevich@yahoo.com</a>
+      </p>
+
+      <footer>
+        © «В Эфире» — Пользовательское соглашение
+      </footer>
+    </div>
+  </div>
 </body>
 </html>
