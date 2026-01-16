@@ -2,11 +2,224 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <title>Privacy Policy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Политика конфиденциальности — В Эфире</title>
+  <style>
+    :root {
+      --bg: #0b0b10;
+      --card: rgba(255,255,255,0.06);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.70);
+      --muted2: rgba(255,255,255,0.55);
+      --line: rgba(255,255,255,0.12);
+      --accent: rgba(168,85,247,0.95);
+      --shadow: 0 10px 30px rgba(0,0,0,0.35);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 700px at 20% 0%, rgba(168,85,247,0.22), transparent 55%),
+                  radial-gradient(900px 600px at 90% 10%, rgba(255,77,77,0.16), transparent 55%),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    .wrap {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 40px 18px 60px;
+    }
+
+    header {
+      margin-bottom: 18px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 6px 10px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.04);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    h1 {
+      margin: 12px 0 8px;
+      font-size: 32px;
+      letter-spacing: -0.02em;
+    }
+
+    .updated {
+      color: var(--muted);
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .card {
+      margin-top: 18px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 20px 18px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--line);
+      margin: 18px 0;
+    }
+
+    h2 {
+      font-size: 20px;
+      margin: 0 0 10px;
+      letter-spacing: -0.01em;
+    }
+
+    h3 {
+      font-size: 16px;
+      margin: 14px 0 8px;
+    }
+
+    p { margin: 0 0 10px; color: var(--text); }
+    .muted { color: var(--muted); }
+    .muted2 { color: var(--muted2); }
+
+    ol, ul { margin: 8px 0 10px 18px; padding: 0; color: var(--text); }
+    li { margin: 6px 0; }
+
+    a {
+      color: rgba(255,255,255,0.92);
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(255,255,255,0.35);
+    }
+    a:hover { border-bottom-color: var(--accent); }
+
+    footer {
+      margin-top: 18px;
+      color: var(--muted2);
+      font-size: 13px;
+    }
+
+    .note {
+      padding: 12px 12px;
+      border-left: 3px solid var(--accent);
+      background: rgba(168,85,247,0.10);
+      border-radius: 10px;
+      color: var(--muted);
+      margin-top: 12px;
+    }
+
+    @media (max-width: 520px) {
+      h1 { font-size: 26px; }
+      .wrap { padding-top: 28px; }
+      .card { padding: 16px 14px; }
+    }
+  </style>
 </head>
+
 <body>
-  <h1>Политика конфиденциальности</h1>
+  <div class="wrap">
+    <header>
+      <span class="badge">В Эфире • Документ</span>
+      <h1>Политика конфиденциальности</h1>
+      <p class="updated">Дата последнего обновления: <strong>15 января 2026 г.</strong></p>
+    </header>
 
-  <p>Настоящая Политика конфиденциальности описывает, как приложение обрабатывает данные пользователей.</p>
+    <div class="card">
+      <p class="muted">
+        Настоящая Политика конфиденциальности описывает, как приложение «В Эфире» (далее — «Приложение») собирает,
+        использует и защищает информацию пользователей.
+      </p>
+      <p class="muted">Используя Приложение, вы соглашаетесь с условиями данной Политики.</p>
 
- 
+      <div class="divider"></div>
+
+      <h2>1. Какие данные мы собираем</h2>
+      <p>Приложение собирает минимально необходимые данные для своей работы.</p>
+
+      <h3>1.1. Данные, которые вы предоставляете добровольно</h3>
+      <ul>
+        <li>Имя пользователя (username)</li>
+        <li>Отображаемое имя</li>
+        <li>Выбранный пол (если указан)</li>
+      </ul>
+      <p class="muted">
+        Эти данные используются исключительно внутри Приложения и могут быть изменены пользователем в любое время.
+      </p>
+
+      <h3>1.2. Данные, собираемые автоматически</h3>
+      <ul>
+        <li>Техническая информация об устройстве (тип устройства, версия ОС)</li>
+        <li>Анонимные данные об использовании функций Приложения</li>
+      </ul>
+      <p class="muted">Эти данные не позволяют идентифицировать пользователя лично.</p>
+
+      <div class="divider"></div>
+
+      <h2>2. Камера и микрофон</h2>
+      <p>Приложение запрашивает доступ к:</p>
+      <ul>
+        <li><strong>Камере</strong> — для отображения превью и симуляции прямых эфиров</li>
+      </ul>
+      <p class="muted">
+        Доступ используется только во время активного эфира. Запись, хранение или передача видео/аудио без вашего
+        участия не производится.
+      </p>
+
+      <div class="divider"></div>
+
+      <h2>3. Хранение и обработка данных</h2>
+      <ul>
+        <li>Все пользовательские настройки хранятся локально на устройстве</li>
+        <li>Мы не передаём ваши данные третьим лицам</li>
+        <li>Мы не продаём и не используем данные в рекламных целях</li>
+        <li>Приложение не использует сторонние трекеры</li>
+      </ul>
+
+      <div class="divider"></div>
+
+      <h2>4. Платежи</h2>
+      <p>Если в Приложении доступны платные функции:</p>
+      <ul>
+        <li>Все платежи обрабатываются через <strong>Apple In-App Purchases</strong></li>
+        <li>Мы не имеем доступа к данным вашей банковской карты</li>
+        <li>Управление подписками осуществляется через настройки Apple ID</li>
+      </ul>
+
+      <div class="divider"></div>
+
+      <h2>5. Дети</h2>
+      <p>Приложение не предназначено для лиц младше 13 лет. Мы сознательно не собираем данные детей.</p>
+
+      <div class="divider"></div>
+
+      <h2>6. Изменения политики</h2>
+      <p class="muted">
+        Мы можем обновлять настоящую Политику. Актуальная версия всегда доступна по этому адресу.
+      </p>
+
+      <div class="divider"></div>
+
+      <h2>7. Контакты</h2>
+      <p class="muted">
+        По вопросам конфиденциальности вы можете связаться с нами:
+      </p>
+      <p>
+        Email:
+        <a href="mailto:antalexeevich@yahoo.com">antalexeevich@yahoo.com</a>
+      </p>
+
+      <footer>
+        © «В Эфире» — Политика конфиденциальности
+      </footer>
+    </div>
+  </div>
+</body>
+</html>
