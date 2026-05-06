@@ -19,7 +19,7 @@
     * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial;
       background: radial-gradient(1200px 700px at 20% 0%, rgba(168,85,247,0.22), transparent 55%),
                   radial-gradient(900px 600px at 90% 10%, rgba(255,77,77,0.16), transparent 55%),
                   var(--bg);
@@ -58,16 +58,17 @@
       transition: all 0.2s;
     }
 
-    /* ЛОГИКА ОТОБРАЖЕНИЯ ЧЕРЕЗ КЛАССЫ BODY */
-    body.lang-en .lang-content[lang="ru"] { display: none; }
-    body.lang-ru .lang-content[lang="en"] { display: none; }
+    /* --- ЛОГИКА ПЕРЕКЛЮЧЕНИЯ (ПРОСТАЯ И НАДЕЖНАЯ) --- */
+    .content-ru, .content-en { display: none; }
 
-    body.lang-en .lang-btn[data-lang="en"],
-    body.lang-ru .lang-btn[data-lang="ru"] {
-      background: var(--accent);
-      color: #fff;
-      border-color: transparent;
-    }
+    /* Когда у body класс lang-en, показываем английский */
+    body.lang-en .content-en { display: block; }
+    body.lang-en .lang-btn[data-lang="en"] { background: var(--accent); color: #fff; border-color: transparent; }
+
+    /* Когда у body класс lang-ru, показываем русский */
+    body.lang-ru .content-ru { display: block; }
+    body.lang-ru .lang-btn[data-lang="ru"] { background: var(--accent); color: #fff; border-color: transparent; }
+    /* ----------------------------------------------- */
 
     .badge {
       display: inline-block;
@@ -108,22 +109,12 @@
       margin: 18px 0;
     }
 
-    h2 {
-      font-size: 20px;
-      margin: 0 0 10px;
-      letter-spacing: -0.01em;
-    }
-
-    h3 {
-      font-size: 16px;
-      margin: 14px 0 8px;
-    }
-
-    p { margin: 0 0 10px; color: var(--text); }
+    h2 { font-size: 20px; margin: 0 0 10px; letter-spacing: -0.01em; }
+    h3 { font-size: 16px; margin: 14px 0 8px; }
+    p { margin: 0 0 10px; }
     .muted { color: var(--muted); }
-    .muted2 { color: var(--muted2); }
 
-    ol, ul { margin: 8px 0 10px 18px; padding: 0; color: var(--text); }
+    ol, ul { margin: 8px 0 10px 18px; padding: 0; }
     li { margin: 6px 0; }
 
     a {
@@ -155,13 +146,13 @@
         <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
       </div>
 
-      <div class="lang-content" lang="en">
+      <div class="content-en">
         <span class="badge">EasyFame • Document</span>
         <h1>Privacy Policy</h1>
         <p class="updated">Last updated: <strong>January 15, 2026</strong></p>
       </div>
 
-      <div class="lang-content" lang="ru">
+      <div class="content-ru">
         <span class="badge">В Эфире • Документ</span>
         <h1>Политика конфиденциальности</h1>
         <p class="updated">Дата последнего обновления: <strong>15 января 2026 г.</strong></p>
@@ -169,192 +160,77 @@
     </header>
 
     <div class="card">
-      <div class="lang-content" lang="en">
-        <p class="muted">
-          This Privacy Policy describes how the "EasyFame" application (hereinafter referred to as the "Application") collects, 
-          uses, and protects user information.
-        </p>
+      <div class="content-en">
+        <p class="muted">This Privacy Policy describes how EasyFame collects, uses, and protects user information.</p>
         <p class="muted">By using the Application, you agree to the terms of this Policy.</p>
-
         <div class="divider"></div>
-
         <h2>1. What data we collect</h2>
         <p>The Application collects the minimum necessary data for its operation.</p>
-
         <h3>1.1. Data you provide voluntarily</h3>
         <ul>
-          <li>Username</li>
-          <li>Display name</li>
+          <li>Username and Display name</li>
           <li>Selected gender (if provided)</li>
         </ul>
-        <p class="muted">
-          This data is used exclusively within the Application and can be changed by the user at any time.
-        </p>
-
+        <p class="muted">This data is stored locally and can be changed at any time.</p>
         <h3>1.2. Data collected automatically</h3>
         <ul>
-          <li>Technical device information (device type, OS version)</li>
-          <li>Anonymous data about the use of the Application's features</li>
+          <li>Technical device info (OS version, device type)</li>
+          <li>Anonymous usage statistics</li>
         </ul>
-        <p class="muted">This data does not allow for personal identification of the user.</p>
-
         <div class="divider"></div>
-
         <h2>2. Camera and Microphone</h2>
-        <p>The Application requests access to:</p>
-        <ul>
-          <li><strong>Camera</strong> — to display the preview and simulate live broadcasts</li>
-        </ul>
-        <p class="muted">
-          Access is used only during an active broadcast. Recording, storing, or transmitting video/audio without your 
-          direct participation is not performed.
-        </p>
-
+        <p>The App requests access to <strong>Camera</strong> to simulate live broadcasts. We do not record or store your video/audio on our servers.</p>
         <div class="divider"></div>
-
-        <h2>3. Data Storage and Processing</h2>
-        <ul>
-          <li>All user settings are stored locally on the device</li>
-          <li>We do not transfer your data to third parties</li>
-          <li>We do not sell or use data for advertising purposes</li>
-          <li>The Application does not use third-party trackers</li>
-        </ul>
-
+        <h2>3. Data Storage</h2>
+        <p>All settings are stored locally. We do not transfer or sell your data to third parties.</p>
         <div class="divider"></div>
-
         <h2>4. Payments</h2>
-        <p>If paid features are available in the Application:</p>
-        <ul>
-          <li>All payments are processed through <strong>Apple In-App Purchases</strong></li>
-          <li>We do not have access to your bank card data</li>
-          <li>Subscription management is handled through Apple ID settings</li>
-        </ul>
-
+        <p>Processed through <strong>Apple In-App Purchases</strong>. We do not have access to your card details.</p>
         <div class="divider"></div>
-
-        <h2>5. Children</h2>
-        <p>The Application is not intended for persons under the age of 13. We do not knowingly collect data from children.</p>
-
-        <div class="divider"></div>
-
-        <h2>6. Policy Changes</h2>
-        <p class="muted">
-          We may update this Policy. The current version is always available at this address.
-        </p>
-
-        <div class="divider"></div>
-
-        <h2>7. Contact Information</h2>
-        <p class="muted">
-          For privacy-related questions, you can contact us:
-        </p>
-        <p>
-          Email:
-          <a href="mailto:developtonyt@icloud.com">developtonyt@icloud.com</a>
-        </p>
-
-        <footer>
-          © "EasyFame" — Privacy Policy
-        </footer>
+        <h2>5. Contacts</h2>
+        <p>Email: <a href="mailto:developtonyt@icloud.com">developtonyt@icloud.com</a></p>
+        <footer>© "EasyFame" — Privacy Policy</footer>
       </div>
 
-      <div class="lang-content" lang="ru">
-        <p class="muted">
-          Настоящая Политика конфиденциальности описывает, как приложение «В Эфире» (далее — «Приложение») собирает,
-          использует и защищает информацию пользователей.
-        </p>
+      <div class="content-ru">
+        <p class="muted">Настоящая Политика конфиденциальности описывает, как EasyFame собирает и защищает информацию пользователей.</p>
         <p class="muted">Используя Приложение, вы соглашаетесь с условиями данной Политики.</p>
-
         <div class="divider"></div>
-
         <h2>1. Какие данные мы собираем</h2>
-        <p>Приложение собирает минимально необходимые данные для своей работы.</p>
-
-        <h3>1.1. Данные, которые вы предоставляете добровольно</h3>
+        <p>Приложение собирает минимально необходимые данные для работы.</p>
+        <h3>1.1. Данные, которые вы предоставляете</h3>
         <ul>
-          <li>Имя пользователя (username)</li>
-          <li>Отображаемое имя</li>
+          <li>Имя пользователя и отображаемое имя</li>
           <li>Выбранный пол (если указан)</li>
         </ul>
-        <p class="muted">
-          Эти данные используются исключительно внутри Приложения и могут быть изменены пользователем в любое время.
-        </p>
-
-        <h3>1.2. Данные, собираемые автоматически</h3>
+        <h3>1.2. Автоматический сбор</h3>
         <ul>
-          <li>Техническая информация об устройстве (тип устройства, версия ОС)</li>
-          <li>Анонимные данные об использовании функций Приложения</li>
+          <li>Техническая информация об устройстве</li>
+          <li>Анонимные данные об использовании функций</li>
         </ul>
-        <p class="muted">Эти данные не позволяют идентифицировать пользователя лично.</p>
-
         <div class="divider"></div>
-
         <h2>2. Камера и микрофон</h2>
-        <p>Приложение запрашивает доступ к:</p>
-        <ul>
-          <li><strong>Камере</strong> — для отображения превью и симуляции прямых эфиров</li>
-        </ul>
-        <p class="muted">
-          Доступ используется только во время активного эфира. Запись, хранение или передача видео/аудио без вашего
-          участия не производится.
-        </p>
-
+        <p>Мы запрашиваем доступ к <strong>камере</strong> для симуляции эфира. Мы не записываем и не храним ваше видео без вашего участия.</p>
         <div class="divider"></div>
-
-        <h2>3. Хранение и обработка данных</h2>
-        <ul>
-          <li>Все пользовательские настройки хранятся локально на устройстве</li>
-          <li>Мы не передаём ваши данные третьим лицам</li>
-          <li>Мы не продаём и не используем данные в рекламных целях</li>
-          <li>Приложение не использует сторонние трекеры</li>
-        </ul>
-
+        <h2>3. Хранение данных</h2>
+        <p>Все настройки хранятся локально на устройстве. Мы не передаем данные третьим лицам.</p>
         <div class="divider"></div>
-
         <h2>4. Платежи</h2>
-        <p>Если в Приложении доступны платные функции:</p>
-        <ul>
-          <li>Все платежи обрабатываются через <strong>Apple In-App Purchases</strong></li>
-          <li>Мы не имеем доступа к данным вашей банковской карты</li>
-          <li>Управление подписками осуществляется через настройки Apple ID</li>
-        </ul>
-
+        <p>Обрабатываются через <strong>Apple In-App Purchases</strong>. У нас нет доступа к данным вашей карты.</p>
         <div class="divider"></div>
-
-        <h2>5. Дети</h2>
-        <p>Приложение не предназначено для лиц младше 13 лет. Мы сознательно не собираем данные детей.</p>
-
-        <div class="divider"></div>
-
-        <h2>6. Изменения политики</h2>
-        <p class="muted">
-          Мы можем обновлять настоящую Политику. Актуальная версия всегда доступна по этому адресу.
-        </p>
-
-        <div class="divider"></div>
-
-        <h2>7. Контакты</h2>
-        <p class="muted">
-          По вопросам конфиденциальности вы можете связаться с нами:
-        </p>
-        <p>
-          Email:
-          <a href="mailto:developtonyt@icloud.com">developtonyt@icloud.com</a>
-        </p>
-
-        <footer>
-          © «В Эфире» — Политика конфиденциальности
-        </footer>
+        <h2>5. Контакты</h2>
+        <p>Email: <a href="mailto:developtonyt@icloud.com">developtonyt@icloud.com</a></p>
+        <footer>© «В Эфире» — Политика конфиденциальности</footer>
       </div>
     </div>
   </div>
 
   <script>
     function setLang(lang) {
-      // Переключаем класс у body
+      // 1. Меняем класс у body
       document.body.className = 'lang-' + lang;
       
-      // Обновляем title страницы
+      // 2. Меняем заголовок страницы
       if (lang === 'ru') {
         document.title = "Политика конфиденциальности — В Эфире";
       } else {
