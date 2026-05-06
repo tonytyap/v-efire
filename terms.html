@@ -44,6 +44,7 @@
       right: 0;
       display: flex;
       gap: 8px;
+      z-index: 100;
     }
 
     .lang-btn {
@@ -54,10 +55,15 @@
       border-radius: 8px;
       cursor: pointer;
       font-size: 13px;
-      transition: 0.2s;
+      transition: all 0.2s;
     }
 
-    .lang-btn.active {
+    /* ЛОГИКА ПЕРЕКЛЮЧЕНИЯ ЯЗЫКА ЧЕРЕЗ КЛАССЫ BODY */
+    body.lang-en .lang-content[lang="ru"] { display: none; }
+    body.lang-ru .lang-content[lang="en"] { display: none; }
+
+    body.lang-en .lang-btn[data-lang="en"],
+    body.lang-ru .lang-btn[data-lang="ru"] {
       background: var(--accent);
       color: #fff;
       border-color: transparent;
@@ -132,9 +138,6 @@
       font-size: 13px;
     }
 
-    /* Изначально скрываем RU, показываем EN */
-    [lang="ru"] { display: none; }
-
     @media (max-width: 520px) {
       h1 { font-size: 26px; }
       .wrap { padding-top: 60px; }
@@ -144,12 +147,11 @@
   </style>
 </head>
 
-<body>
-  <div class="wrap">
+<body class="lang-en"> <div class="wrap">
     <header>
       <div class="lang-switcher">
-        <button id="btn-ru" class="lang-btn" onclick="setLang('ru')">RU</button>
-        <button id="btn-en" class="lang-btn active" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" data-lang="ru" onclick="setLang('ru')">RU</button>
+        <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
       </div>
 
       <div class="lang-content" lang="en">
@@ -173,9 +175,7 @@
         <p class="muted">
           By using the Application, you confirm that you have read and agree to the terms of this Agreement.
         </p>
-
         <div class="divider"></div>
-
         <h2>1. Service Description</h2>
         <p>The Application provides tools for:</p>
         <ul>
@@ -183,12 +183,8 @@
           <li>public speaking skills training</li>
           <li>managing visual and text activity during streams</li>
         </ul>
-        <p class="muted">
-          The Application does not guarantee audience growth, popularity, or commercial success.
-        </p>
-
+        <p class="muted">The Application does not guarantee audience growth, popularity, or commercial success.</p>
         <div class="divider"></div>
-
         <h2>2. Use of the Application</h2>
         <p>The User agrees to:</p>
         <ul>
@@ -196,41 +192,32 @@
           <li>not violate the rights of third parties</li>
           <li>not use the Application for illegal activities</li>
         </ul>
-
         <p>Prohibited actions:</p>
         <ul>
           <li>attempts to hack or interfere with the Application's operation</li>
           <li>use of automated tools without permission</li>
           <li>distribution of malicious software</li>
         </ul>
-
         <div class="divider"></div>
-
         <h2>3. User Content</h2>
         <p>The User is fully responsible for:</p>
         <ul>
           <li>texts entered by them</li>
           <li>actions performed during the stream</li>
         </ul>
-        <p class="muted">
-          The Application does not publicly distribute user content without their direct participation.
-        </p>
-
+        <p class="muted">The Application does not publicly distribute user content without their direct participation.</p>
         <div class="divider"></div>
-
         <h2>4. Paid Features</h2>
         <p>Both one-time purchases and subscriptions may be available in the Application.</p>
         <ul>
           <li>One-time purchases provide access to specific features or capabilities</li>
-          <li>Subscriptions provide extended access to the Application's functionality for the duration of the subscription</li>
+          <li>Subscriptions provide extended access to the Application's functionality</li>
           <li>All payments are processed through the Apple In-App Purchases system</li>
           <li>We do not have access to your bank card data</li>
           <li>Refunds and charges are governed by App Store rules</li>
-          <li>Subscription management and cancellation are handled by the user through Apple ID settings</li>
+          <li>Subscription management is handled by the user through Apple ID settings</li>
         </ul>
-
         <div class="divider"></div>
-
         <h2>5. Limitation of Liability</h2>
         <p>The Application is provided "as is".</p>
         <p>We are not responsible for:</p>
@@ -239,36 +226,18 @@
           <li>loss of data</li>
           <li>expectations that do not match the Application's functionality</li>
         </ul>
-
         <div class="divider"></div>
-
         <h2>6. Termination of Use</h2>
-        <p>
-          The User may stop using the Application at any time by deleting it from their device.
-        </p>
-        <p class="muted">
-          We reserve the right to limit access in case of violation of the terms of the Agreement.
-        </p>
-
+        <p>The User may stop using the Application at any time by deleting it from their device.</p>
+        <p class="muted">We reserve the right to limit access in case of violation of the terms.</p>
         <div class="divider"></div>
-
         <h2>7. Changes to Terms</h2>
-        <p class="muted">
-          We may change the terms of the Agreement. Continued use of the Application signifies your acceptance of the updated terms.
-        </p>
-
+        <p class="muted">We may change the terms of the Agreement. Continued use signifies acceptance of updated terms.</p>
         <div class="divider"></div>
-
         <h2>8. Contact Information</h2>
         <p class="muted">For questions related to the terms of use:</p>
-        <p>
-          Email:
-          <a href="mailto:developtonyt@icloud.com">developtonyt@icloud.com</a>
-        </p>
-
-        <footer>
-          © "EasyFame" — Terms of Service
-        </footer>
+        <p>Email: <a href="mailto:developtonyt@icloud.com">developtonyt@icloud.com</a></p>
+        <footer>© "EasyFame" — Terms of Service</footer>
       </div>
 
       <div class="lang-content" lang="ru">
@@ -278,9 +247,7 @@
         <p class="muted">
           Используя Приложение, вы подтверждаете, что ознакомились и согласны с условиями данного Соглашения.
         </p>
-
         <div class="divider"></div>
-
         <h2>1. Описание сервиса</h2>
         <p>Приложение предоставляет инструменты для:</p>
         <ul>
@@ -288,12 +255,8 @@
           <li>тренировки навыков выступления</li>
           <li>работы с визуальной и текстовой активностью в эфире</li>
         </ul>
-        <p class="muted">
-          Приложение не гарантирует рост аудитории, популярность или коммерческий успех.
-        </p>
-
+        <p class="muted">Приложение не гарантирует рост аудитории, популярность или коммерческий успех.</p>
         <div class="divider"></div>
-
         <h2>2. Использование приложения</h2>
         <p>Пользователь обязуется:</p>
         <ul>
@@ -301,96 +264,61 @@
           <li>не нарушать права третьих лиц</li>
           <li>не использовать Приложение для противоправных действий</li>
         </ul>
-
         <p>Запрещается:</p>
         <ul>
           <li>попытки взлома или вмешательства в работу Приложения</li>
           <li>использование автоматизированных средств без разрешения</li>
           <li>распространение вредоносного ПО</li>
         </ul>
-
         <div class="divider"></div>
-
         <h2>3. Контент пользователя</h2>
         <p>Пользователь несёт полную ответственность за:</p>
         <ul>
           <li>вводимые им тексты</li>
           <li>действия, совершаемые в эфире</li>
         </ul>
-        <p class="muted">
-          Приложение не осуществляет публичное распространение пользовательского контента без его участия.
-        </p>
-
+        <p class="muted">Приложение не осуществляет публичное распространение контента без вашего участия.</p>
         <div class="divider"></div>
-
         <h2>4. Платные функции</h2>
-        <p>В Приложении могут быть доступны как разовые покупки, так и подписка.</p>
+        <p>В Приложении могут быть доступны разовые покупки и подписка.</p>
         <ul>
-          <li>Разовые покупки предоставляют доступ к отдельным функциям или возможностям</li>
-          <li>Подписка предоставляет расширенный доступ к функционалу Приложения на период её действия</li>
-          <li>Все платежи обрабатываются через систему Apple In-App Purchases</li>
-          <li>Мы не имеем доступа к данным вашей банковской карты</li>
-          <li>Возвраты и списания регулируются правилами App Store</li>
-          <li>Управление и отмена подписки осуществляются пользователем через настройки Apple ID</li>
+          <li>Разовые покупки дают доступ к отдельным функциям</li>
+          <li>Подписка дает расширенный доступ на период её действия</li>
+          <li>Все платежи идут через Apple In-App Purchases</li>
+          <li>Мы не имеем доступа к данным вашей карты</li>
+          <li>Возвраты регулируются правилами App Store</li>
+          <li>Управление подпиской — через настройки Apple ID</li>
         </ul>
-
         <div class="divider"></div>
-
         <h2>5. Ограничение ответственности</h2>
         <p>Приложение предоставляется «как есть».</p>
         <p>Мы не несем ответственности за:</p>
         <ul>
           <li>прямые или косвенные убытки</li>
           <li>потерю данных</li>
-          <li>ожидания, не соответствующие функционалу Приложения</li>
+          <li>несоответствие ожиданиям</li>
         </ul>
-
         <div class="divider"></div>
-
         <h2>6. Прекращение использования</h2>
-        <p>
-          Пользователь может прекратить использование Приложения в любой момент, удалив его с устройства.
-        </p>
-        <p class="muted">
-          Мы оставляем за собой право ограничить доступ при нарушении условий Соглашения.
-        </p>
-
+        <p>Вы можете прекратить использование, удалив приложение с устройства.</p>
+        <p class="muted">Мы можем ограничить доступ при нарушении условий.</p>
         <div class="divider"></div>
-
         <h2>7. Изменения условий</h2>
-        <p class="muted">
-          Мы можем изменять условия Соглашения. Продолжение использования Приложения означает согласие с обновлёнными условиями.
-        </p>
-
+        <p class="muted">Мы можем изменять условия. Продолжение использования означает согласие с изменениями.</p>
         <div class="divider"></div>
-
         <h2>8. Контакты</h2>
-        <p class="muted">По вопросам, связанным с условиями использования:</p>
-        <p>
-          Email:
-          <a href="mailto:developtonyt@icloud.com">developtonyt@icloud.com</a>
-        </p>
-
-        <footer>
-          © «В Эфире» — Пользовательское соглашение
-        </footer>
+        <p class="muted">По вопросам использования:</p>
+        <p>Email: <a href="mailto:developtonyt@icloud.com">developtonyt@icloud.com</a></p>
+        <footer>© «В Эфире» — Пользовательское соглашение</footer>
       </div>
     </div>
   </div>
 
   <script>
     function setLang(lang) {
-      document.querySelectorAll('.lang-content').forEach(el => {
-        el.style.display = el.getAttribute('lang') === lang ? 'block' : 'none';
-      });
-      
-      document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.innerText.toLowerCase() === lang);
-      });
-
-      document.documentElement.lang = lang;
-      
-      // Обновляем title страницы в зависимости от языка
+      // Переключаем класс у body
+      document.body.className = 'lang-' + lang;
+      // Меняем заголовок страницы
       if (lang === 'ru') {
         document.title = "Пользовательское соглашение — В Эфире";
       } else {
