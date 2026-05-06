@@ -44,6 +44,7 @@
       right: 0;
       display: flex;
       gap: 8px;
+      z-index: 100;
     }
 
     .lang-btn {
@@ -54,10 +55,15 @@
       border-radius: 8px;
       cursor: pointer;
       font-size: 13px;
-      transition: 0.2s;
+      transition: all 0.2s;
     }
 
-    .lang-btn.active {
+    /* ЛОГИКА ОТОБРАЖЕНИЯ ЧЕРЕЗ КЛАССЫ BODY */
+    body.lang-en .lang-content[lang="ru"] { display: none; }
+    body.lang-ru .lang-content[lang="en"] { display: none; }
+
+    body.lang-en .lang-btn[data-lang="en"],
+    body.lang-ru .lang-btn[data-lang="ru"] {
       background: var(--accent);
       color: #fff;
       border-color: transparent;
@@ -133,9 +139,6 @@
       font-size: 13px;
     }
 
-    /* Изначально скрываем RU, показываем EN */
-    [lang="ru"] { display: none; }
-
     @media (max-width: 520px) {
       h1 { font-size: 26px; }
       .wrap { padding-top: 60px; }
@@ -145,12 +148,11 @@
   </style>
 </head>
 
-<body>
-  <div class="wrap">
+<body class="lang-en"> <div class="wrap">
     <header>
       <div class="lang-switcher">
-        <button id="btn-ru" class="lang-btn" onclick="setLang('ru')">RU</button>
-        <button id="btn-en" class="lang-btn active" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" data-lang="ru" onclick="setLang('ru')">RU</button>
+        <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
       </div>
 
       <div class="lang-content" lang="en">
@@ -349,16 +351,10 @@
 
   <script>
     function setLang(lang) {
-      document.querySelectorAll('.lang-content').forEach(el => {
-        el.style.display = el.getAttribute('lang') === lang ? 'block' : 'none';
-      });
+      // Переключаем класс у body
+      document.body.className = 'lang-' + lang;
       
-      document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.innerText.toLowerCase() === lang);
-      });
-
-      document.documentElement.lang = lang;
-      
+      // Обновляем title страницы
       if (lang === 'ru') {
         document.title = "Политика конфиденциальности — В Эфире";
       } else {
