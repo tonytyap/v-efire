@@ -118,8 +118,8 @@
       font-size: 13px;
     }
 
-    /* Изначально скрываем RU, показываем EN */
-    [lang="ru"] { display: none; }
+    /* Скрываем весь языковой контент по умолчанию, JS включит нужный */
+    .lang-content { display: none; }
 
     @media (max-width: 520px) {
       h1 { font-size: 26px; }
@@ -220,22 +220,35 @@
 
   <script>
     function setLang(lang) {
+      // 1. Показываем/скрываем текстовые блоки
       document.querySelectorAll('.lang-content').forEach(el => {
-        el.style.display = el.getAttribute('lang') === lang ? 'block' : 'none';
+        if (el.getAttribute('lang') === lang) {
+          el.style.display = 'block';
+        } else {
+          el.style.display = 'none';
+        }
       });
       
+      // 2. Управляем активным состоянием кнопок
       document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.innerText.toLowerCase() === lang);
+        // Убираем пробелы и приводим к нижнему регистру для надежности
+        const btnLang = btn.id.replace('btn-', ''); 
+        btn.classList.toggle('active', btnLang === lang);
       });
 
+      // 3. Меняем атрибут lang у тега html
       document.documentElement.lang = lang;
       
+      // 4. Меняем заголовок вкладки
       if (lang === 'ru') {
         document.title = "Поддержка — В Эфире";
       } else {
         document.title = "Support — EasyFame";
       }
     }
+
+    // Запускаем английский язык при загрузке страницы
+    window.onload = () => setLang('en');
   </script>
 </body>
 </html>
