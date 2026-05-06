@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Поддержка — В Эфире</title>
+  <title>Support — EasyFame</title>
   <style>
     :root {
       --bg: #0b0b10;
@@ -34,7 +34,35 @@
       padding: 40px 18px 60px;
     }
 
-    header { margin-bottom: 18px; }
+    header { 
+      margin-bottom: 18px; 
+      position: relative;
+    }
+
+    .lang-switcher {
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: flex;
+      gap: 8px;
+    }
+
+    .lang-btn {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--line);
+      color: var(--muted);
+      padding: 6px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 13px;
+      transition: 0.2s;
+    }
+
+    .lang-btn.active {
+      background: var(--accent);
+      color: #fff;
+      border-color: transparent;
+    }
 
     .badge {
       display: inline-block;
@@ -60,6 +88,7 @@
       padding: 20px 18px;
       box-shadow: var(--shadow);
       backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
 
     .divider {
@@ -89,10 +118,14 @@
       font-size: 13px;
     }
 
+    /* Изначально скрываем RU, показываем EN */
+    [lang="ru"] { display: none; }
+
     @media (max-width: 520px) {
       h1 { font-size: 26px; }
-      .wrap { padding-top: 28px; }
+      .wrap { padding-top: 60px; }
       .card { padding: 16px 14px; }
+      .lang-switcher { top: -40px; }
     }
   </style>
 </head>
@@ -100,42 +133,109 @@
 <body>
   <div class="wrap">
     <header>
-      <span class="badge">В Эфире • Поддержка</span>
-      <h1>Служба поддержки</h1>
+      <div class="lang-switcher">
+        <button id="btn-ru" class="lang-btn" onclick="setLang('ru')">RU</button>
+        <button id="btn-en" class="lang-btn active" onclick="setLang('en')">EN</button>
+      </div>
+
+      <div class="lang-content" lang="en">
+        <span class="badge">EasyFame • Support</span>
+        <h1>Support Service</h1>
+      </div>
+
+      <div class="lang-content" lang="ru">
+        <span class="badge">В Эфире • Поддержка</span>
+        <h1>Служба поддержки</h1>
+      </div>
     </header>
 
     <div class="card">
+      
+      <div class="lang-content" lang="en">
+        <h2>Contact Us</h2>
+        <p>
+          If you have any questions, problems, or suggestions for improving the application, 
+          please write to us by email:
+        </p>
 
-      <h2>Связаться с нами</h2>
-      <p>
-        Если у вас возникли вопросы, проблемы или предложения по улучшению приложения,
-        пожалуйста, напишите нам на email:
-      </p>
+        <p>
+          <strong>Email:</strong>
+          <a href="mailto:developtonyt@icloud.com">developtonyt@icloud.com</a>
+        </p>
 
-      <p>
-        <strong>Email:</strong>
-        <a href="mailto:developtonyt@icloud.com">developtonyt@icloud.com</a>
-      </p>
+        <div class="divider"></div>
 
-      <div class="divider"></div>
+        <h2>About the App</h2>
+        <p>
+          EasyFame is an entertainment simulation app that creates 
+          the effect of a live broadcast with virtual viewers.
+        </p>
 
-      <h2>О приложении</h2>
-      <p>
-        «В Эфире» — это развлекательное приложение-симулятор,
-        создающее эффект прямого эфира с виртуальными зрителями.
-      </p>
+        <div class="divider"></div>
 
-      <div class="divider"></div>
+        <h2>Response Time</h2>
+        <p>
+          We try to respond to inquiries within 24–48 hours.
+        </p>
 
-      <h2>Время ответа</h2>
-      <p>
-        Мы стараемся отвечать на обращения в течение 24–48 часов.
-      </p>
+        <footer>
+          © 2026 EasyFame
+        </footer>
+      </div>
 
-      <footer>
-        © 2026 В Эфире
-      </footer>
+      <div class="lang-content" lang="ru">
+        <h2>Связаться с нами</h2>
+        <p>
+          Если у вас возникли вопросы, проблемы или предложения по улучшению приложения,
+          пожалуйста, напишите нам на email:
+        </p>
+
+        <p>
+          <strong>Email:</strong>
+          <a href="mailto:developtonyt@icloud.com">developtonyt@icloud.com</a>
+        </p>
+
+        <div class="divider"></div>
+
+        <h2>О приложении</h2>
+        <p>
+          «В Эфире» — это развлекательное приложение-симулятор,
+          создающее эффект прямого эфира с виртуальными зрителями.
+        </p>
+
+        <div class="divider"></div>
+
+        <h2>Время ответа</h2>
+        <p>
+          Мы стараемся отвечать на обращения в течение 24–48 часов.
+        </p>
+
+        <footer>
+          © 2026 В Эфире
+        </footer>
+      </div>
+
     </div>
   </div>
+
+  <script>
+    function setLang(lang) {
+      document.querySelectorAll('.lang-content').forEach(el => {
+        el.style.display = el.getAttribute('lang') === lang ? 'block' : 'none';
+      });
+      
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.innerText.toLowerCase() === lang);
+      });
+
+      document.documentElement.lang = lang;
+      
+      if (lang === 'ru') {
+        document.title = "Поддержка — В Эфире";
+      } else {
+        document.title = "Support — EasyFame";
+      }
+    }
+  </script>
 </body>
 </html>
