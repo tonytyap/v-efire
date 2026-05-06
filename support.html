@@ -26,6 +26,7 @@
                   var(--bg);
       color: var(--text);
       line-height: 1.55;
+      transition: opacity 0.2s;
     }
 
     .wrap {
@@ -45,6 +46,7 @@
       right: 0;
       display: flex;
       gap: 8px;
+      z-index: 100;
     }
 
     .lang-btn {
@@ -55,10 +57,15 @@
       border-radius: 8px;
       cursor: pointer;
       font-size: 13px;
-      transition: 0.2s;
+      transition: all 0.2s;
     }
 
-    .lang-btn.active {
+    /* Логика отображения через классы body */
+    body.lang-en .lang-content[lang="ru"] { display: none; }
+    body.lang-ru .lang-content[lang="en"] { display: none; }
+
+    body.lang-en .lang-btn[data-lang="en"],
+    body.lang-ru .lang-btn[data-lang="ru"] {
       background: var(--accent);
       color: #fff;
       border-color: transparent;
@@ -97,11 +104,7 @@
       margin: 18px 0;
     }
 
-    h2 {
-      font-size: 20px;
-      margin: 0 0 10px;
-    }
-
+    h2 { font-size: 20px; margin: 0 0 10px; }
     p { margin: 0 0 10px; }
 
     a {
@@ -109,7 +112,6 @@
       text-decoration: none;
       border-bottom: 1px dashed rgba(255,255,255,0.35);
     }
-
     a:hover { border-bottom-color: var(--accent); }
 
     footer {
@@ -117,9 +119,6 @@
       color: var(--muted2);
       font-size: 13px;
     }
-
-    /* Скрываем весь языковой контент по умолчанию, JS включит нужный */
-    .lang-content { display: none; }
 
     @media (max-width: 520px) {
       h1 { font-size: 26px; }
@@ -130,12 +129,11 @@
   </style>
 </head>
 
-<body>
-  <div class="wrap">
+<body class="lang-en"> <div class="wrap">
     <header>
       <div class="lang-switcher">
-        <button id="btn-ru" class="lang-btn" onclick="setLang('ru')">RU</button>
-        <button id="btn-en" class="lang-btn active" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" data-lang="ru" onclick="setLang('ru')">RU</button>
+        <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
       </div>
 
       <div class="lang-content" lang="en">
@@ -157,30 +155,20 @@
           If you have any questions, problems, or suggestions for improving the application, 
           please write to us by email:
         </p>
-
         <p>
           <strong>Email:</strong>
           <a href="mailto:developtonyt@icloud.com">developtonyt@icloud.com</a>
         </p>
-
         <div class="divider"></div>
-
         <h2>About the App</h2>
         <p>
           EasyFame is an entertainment simulation app that creates 
           the effect of a live broadcast with virtual viewers.
         </p>
-
         <div class="divider"></div>
-
         <h2>Response Time</h2>
-        <p>
-          We try to respond to inquiries within 24–48 hours.
-        </p>
-
-        <footer>
-          © 2026 EasyFame
-        </footer>
+        <p>We try to respond to inquiries within 24–48 hours.</p>
+        <footer>© 2026 EasyFame</footer>
       </div>
 
       <div class="lang-content" lang="ru">
@@ -189,30 +177,20 @@
           Если у вас возникли вопросы, проблемы или предложения по улучшению приложения,
           пожалуйста, напишите нам на email:
         </p>
-
         <p>
           <strong>Email:</strong>
           <a href="mailto:developtonyt@icloud.com">developtonyt@icloud.com</a>
         </p>
-
         <div class="divider"></div>
-
         <h2>О приложении</h2>
         <p>
           «В Эфире» — это развлекательное приложение-симулятор,
           создающее эффект прямого эфира с виртуальными зрителями.
         </p>
-
         <div class="divider"></div>
-
         <h2>Время ответа</h2>
-        <p>
-          Мы стараемся отвечать на обращения в течение 24–48 часов.
-        </p>
-
-        <footer>
-          © 2026 В Эфире
-        </footer>
+        <p>Мы стараемся отвечать на обращения в течение 24–48 часов.</p>
+        <footer>© 2026 В Эфире</footer>
       </div>
 
     </div>
@@ -220,35 +198,16 @@
 
   <script>
     function setLang(lang) {
-      // 1. Показываем/скрываем текстовые блоки
-      document.querySelectorAll('.lang-content').forEach(el => {
-        if (el.getAttribute('lang') === lang) {
-          el.style.display = 'block';
-        } else {
-          el.style.display = 'none';
-        }
-      });
+      // Просто меняем класс у body, остальное сделает CSS
+      document.body.className = 'lang-' + lang;
       
-      // 2. Управляем активным состоянием кнопок
-      document.querySelectorAll('.lang-btn').forEach(btn => {
-        // Убираем пробелы и приводим к нижнему регистру для надежности
-        const btnLang = btn.id.replace('btn-', ''); 
-        btn.classList.toggle('active', btnLang === lang);
-      });
-
-      // 3. Меняем атрибут lang у тега html
-      document.documentElement.lang = lang;
-      
-      // 4. Меняем заголовок вкладки
+      // Меняем заголовок вкладки
       if (lang === 'ru') {
         document.title = "Поддержка — В Эфире";
       } else {
         document.title = "Support — EasyFame";
       }
     }
-
-    // Запускаем английский язык при загрузке страницы
-    window.onload = () => setLang('en');
   </script>
 </body>
 </html>
