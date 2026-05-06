@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Пользовательское соглашение — В Эфире</title>
+  <title>Terms of Service — EasyFame</title>
   <style>
     :root {
       --bg: #0b0b10;
@@ -33,7 +33,35 @@
       padding: 40px 18px 60px;
     }
 
-    header { margin-bottom: 18px; }
+    header { 
+      margin-bottom: 18px; 
+      position: relative;
+    }
+
+    .lang-switcher {
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: flex;
+      gap: 8px;
+    }
+
+    .lang-btn {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--line);
+      color: var(--muted);
+      padding: 6px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 13px;
+      transition: 0.2s;
+    }
+
+    .lang-btn.active {
+      background: var(--accent);
+      color: #fff;
+      border-color: transparent;
+    }
 
     .badge {
       display: inline-block;
@@ -104,19 +132,14 @@
       font-size: 13px;
     }
 
-    .note {
-      padding: 12px 12px;
-      border-left: 3px solid var(--accent);
-      background: rgba(168,85,247,0.10);
-      border-radius: 10px;
-      color: var(--muted);
-      margin-top: 12px;
-    }
+    /* Изначально скрываем RU, показываем EN */
+    [lang="ru"] { display: none; }
 
     @media (max-width: 520px) {
       h1 { font-size: 26px; }
-      .wrap { padding-top: 28px; }
+      .wrap { padding-top: 60px; }
       .card { padding: 16px 14px; }
+      .lang-switcher { top: -40px; }
     }
   </style>
 </head>
@@ -124,115 +147,256 @@
 <body>
   <div class="wrap">
     <header>
-      <span class="badge">В Эфире • Документ</span>
-      <h1>Пользовательское соглашение</h1>
-      <p class="updated">Дата последнего обновления: <strong>15 января 2026 г.</strong></p>
+      <div class="lang-switcher">
+        <button id="btn-ru" class="lang-btn" onclick="setLang('ru')">RU</button>
+        <button id="btn-en" class="lang-btn active" onclick="setLang('en')">EN</button>
+      </div>
+
+      <div class="lang-content" lang="en">
+        <span class="badge">EasyFame • Document</span>
+        <h1>Terms of Service</h1>
+        <p class="updated">Last updated: <strong>January 15, 2026</strong></p>
+      </div>
+
+      <div class="lang-content" lang="ru">
+        <span class="badge">В Эфире • Документ</span>
+        <h1>Пользовательское соглашение</h1>
+        <p class="updated">Дата последнего обновления: <strong>15 января 2026 г.</strong></p>
+      </div>
     </header>
 
     <div class="card">
-      <p class="muted">
-        Настоящее Пользовательское соглашение (далее — «Соглашение») регулирует использование приложения «В Эфире».
-      </p>
-      <p class="muted">
-        Используя Приложение, вы подтверждаете, что ознакомились и согласны с условиями данного Соглашения.
-      </p>
+      <div class="lang-content" lang="en">
+        <p class="muted">
+          This Terms of Service (hereinafter referred to as the "Agreement") governs the use of the "EasyFame" application.
+        </p>
+        <p class="muted">
+          By using the Application, you confirm that you have read and agree to the terms of this Agreement.
+        </p>
 
-      <div class="divider"></div>
+        <div class="divider"></div>
 
-      <h2>1. Описание сервиса</h2>
-      <p>Приложение предоставляет инструменты для:</p>
-      <ul>
-        <li>симуляции прямых эфиров</li>
-        <li>тренировки навыков выступления</li>
-        <li>работы с визуальной и текстовой активностью в эфире</li>
-      </ul>
-      <p class="muted">
-        Приложение не гарантирует рост аудитории, популярность или коммерческий успех.
-      </p>
+        <h2>1. Service Description</h2>
+        <p>The Application provides tools for:</p>
+        <ul>
+          <li>live stream simulation</li>
+          <li>public speaking skills training</li>
+          <li>managing visual and text activity during streams</li>
+        </ul>
+        <p class="muted">
+          The Application does not guarantee audience growth, popularity, or commercial success.
+        </p>
 
-      <div class="divider"></div>
+        <div class="divider"></div>
 
-      <h2>2. Использование приложения</h2>
-      <p>Пользователь обязуется:</p>
-      <ul>
-        <li>использовать Приложение в законных целях</li>
-        <li>не нарушать права третьих лиц</li>
-        <li>не использовать Приложение для противоправных действий</li>
-      </ul>
+        <h2>2. Use of the Application</h2>
+        <p>The User agrees to:</p>
+        <ul>
+          <li>use the Application for lawful purposes</li>
+          <li>not violate the rights of third parties</li>
+          <li>not use the Application for illegal activities</li>
+        </ul>
 
-      <p>Запрещается:</p>
-      <ul>
-        <li>попытки взлома или вмешательства в работу Приложения</li>
-        <li>использование автоматизированных средств без разрешения</li>
-        <li>распространение вредоносного ПО</li>
-      </ul>
+        <p>Prohibited actions:</p>
+        <ul>
+          <li>attempts to hack or interfere with the Application's operation</li>
+          <li>use of automated tools without permission</li>
+          <li>distribution of malicious software</li>
+        </ul>
 
-      <div class="divider"></div>
+        <div class="divider"></div>
 
-      <h2>3. Контент пользователя</h2>
-      <p>Пользователь несёт полную ответственность за:</p>
-      <ul>
-        <li>вводимые им тексты</li>
-        <li>действия, совершаемые в эфире</li>
-      </ul>
-      <p class="muted">
-        Приложение не осуществляет публичное распространение пользовательского контента без его участия.
-      </p>
+        <h2>3. User Content</h2>
+        <p>The User is fully responsible for:</p>
+        <ul>
+          <li>texts entered by them</li>
+          <li>actions performed during the stream</li>
+        </ul>
+        <p class="muted">
+          The Application does not publicly distribute user content without their direct participation.
+        </p>
 
-      <div class="divider"></div>
+        <div class="divider"></div>
 
-      <h2>4. Платные функции</h2>
-      <p>В Приложении могут быть доступны как разовые покупки, так и подписка.</p>
-      <ul>
-      <li>Разовые покупки предоставляют доступ к отдельным функциям или возможностям</li>
-      <li>Подписка предоставляет расширенный доступ к функционалу Приложения на период её действия</li>
-      <li>Все платежи обрабатываются через систему Apple In-App Purchases</li>
-      <li>Мы не имеем доступа к данным вашей банковской карты</li>
-      <li>Возвраты и списания регулируются правилами App Store</li>
-      <li>Управление и отмена подписки осуществляются пользователем через настройки Apple ID</li>
-      </ul>
+        <h2>4. Paid Features</h2>
+        <p>Both one-time purchases and subscriptions may be available in the Application.</p>
+        <ul>
+          <li>One-time purchases provide access to specific features or capabilities</li>
+          <li>Subscriptions provide extended access to the Application's functionality for the duration of the subscription</li>
+          <li>All payments are processed through the Apple In-App Purchases system</li>
+          <li>We do not have access to your bank card data</li>
+          <li>Refunds and charges are governed by App Store rules</li>
+          <li>Subscription management and cancellation are handled by the user through Apple ID settings</li>
+        </ul>
 
-      <div class="divider"></div>
+        <div class="divider"></div>
 
-      <h2>5. Ограничение ответственности</h2>
-      <p>Приложение предоставляется «как есть».</p>
-      <p>Мы не несем ответственности за:</p>
-      <ul>
-        <li>прямые или косвенные убытки</li>
-        <li>потерю данных</li>
-        <li>ожидания, не соответствующие функционалу Приложения</li>
-      </ul>
+        <h2>5. Limitation of Liability</h2>
+        <p>The Application is provided "as is".</p>
+        <p>We are not responsible for:</p>
+        <ul>
+          <li>direct or indirect damages</li>
+          <li>loss of data</li>
+          <li>expectations that do not match the Application's functionality</li>
+        </ul>
 
-      <div class="divider"></div>
+        <div class="divider"></div>
 
-      <h2>6. Прекращение использования</h2>
-      <p>
-        Пользователь может прекратить использование Приложения в любой момент, удалив его с устройства.
-      </p>
-      <p class="muted">
-        Мы оставляем за собой право ограничить доступ при нарушении условий Соглашения.
-      </p>
+        <h2>6. Termination of Use</h2>
+        <p>
+          The User may stop using the Application at any time by deleting it from their device.
+        </p>
+        <p class="muted">
+          We reserve the right to limit access in case of violation of the terms of the Agreement.
+        </p>
 
-      <div class="divider"></div>
+        <div class="divider"></div>
 
-      <h2>7. Изменения условий</h2>
-      <p class="muted">
-        Мы можем изменять условия Соглашения. Продолжение использования Приложения означает согласие с обновлёнными условиями.
-      </p>
+        <h2>7. Changes to Terms</h2>
+        <p class="muted">
+          We may change the terms of the Agreement. Continued use of the Application signifies your acceptance of the updated terms.
+        </p>
 
-      <div class="divider"></div>
+        <div class="divider"></div>
 
-      <h2>8. Контакты</h2>
-      <p class="muted">По вопросам, связанным с условиями использования:</p>
-      <p>
-        Email:
-        <a href="mailto:developtonyt@icloud.com">developtonyt@icloud.com</a>
-      </p>
+        <h2>8. Contact Information</h2>
+        <p class="muted">For questions related to the terms of use:</p>
+        <p>
+          Email:
+          <a href="mailto:developtonyt@icloud.com">developtonyt@icloud.com</a>
+        </p>
 
-      <footer>
-        © «В Эфире» — Пользовательское соглашение
-      </footer>
+        <footer>
+          © "EasyFame" — Terms of Service
+        </footer>
+      </div>
+
+      <div class="lang-content" lang="ru">
+        <p class="muted">
+          Настоящее Пользовательское соглашение (далее — «Соглашение») регулирует использование приложения «В Эфире».
+        </p>
+        <p class="muted">
+          Используя Приложение, вы подтверждаете, что ознакомились и согласны с условиями данного Соглашения.
+        </p>
+
+        <div class="divider"></div>
+
+        <h2>1. Описание сервиса</h2>
+        <p>Приложение предоставляет инструменты для:</p>
+        <ul>
+          <li>симуляции прямых эфиров</li>
+          <li>тренировки навыков выступления</li>
+          <li>работы с визуальной и текстовой активностью в эфире</li>
+        </ul>
+        <p class="muted">
+          Приложение не гарантирует рост аудитории, популярность или коммерческий успех.
+        </p>
+
+        <div class="divider"></div>
+
+        <h2>2. Использование приложения</h2>
+        <p>Пользователь обязуется:</p>
+        <ul>
+          <li>использовать Приложение в законных целях</li>
+          <li>не нарушать права третьих лиц</li>
+          <li>не использовать Приложение для противоправных действий</li>
+        </ul>
+
+        <p>Запрещается:</p>
+        <ul>
+          <li>попытки взлома или вмешательства в работу Приложения</li>
+          <li>использование автоматизированных средств без разрешения</li>
+          <li>распространение вредоносного ПО</li>
+        </ul>
+
+        <div class="divider"></div>
+
+        <h2>3. Контент пользователя</h2>
+        <p>Пользователь несёт полную ответственность за:</p>
+        <ul>
+          <li>вводимые им тексты</li>
+          <li>действия, совершаемые в эфире</li>
+        </ul>
+        <p class="muted">
+          Приложение не осуществляет публичное распространение пользовательского контента без его участия.
+        </p>
+
+        <div class="divider"></div>
+
+        <h2>4. Платные функции</h2>
+        <p>В Приложении могут быть доступны как разовые покупки, так и подписка.</p>
+        <ul>
+          <li>Разовые покупки предоставляют доступ к отдельным функциям или возможностям</li>
+          <li>Подписка предоставляет расширенный доступ к функционалу Приложения на период её действия</li>
+          <li>Все платежи обрабатываются через систему Apple In-App Purchases</li>
+          <li>Мы не имеем доступа к данным вашей банковской карты</li>
+          <li>Возвраты и списания регулируются правилами App Store</li>
+          <li>Управление и отмена подписки осуществляются пользователем через настройки Apple ID</li>
+        </ul>
+
+        <div class="divider"></div>
+
+        <h2>5. Ограничение ответственности</h2>
+        <p>Приложение предоставляется «как есть».</p>
+        <p>Мы не несем ответственности за:</p>
+        <ul>
+          <li>прямые или косвенные убытки</li>
+          <li>потерю данных</li>
+          <li>ожидания, не соответствующие функционалу Приложения</li>
+        </ul>
+
+        <div class="divider"></div>
+
+        <h2>6. Прекращение использования</h2>
+        <p>
+          Пользователь может прекратить использование Приложения в любой момент, удалив его с устройства.
+        </p>
+        <p class="muted">
+          Мы оставляем за собой право ограничить доступ при нарушении условий Соглашения.
+        </p>
+
+        <div class="divider"></div>
+
+        <h2>7. Изменения условий</h2>
+        <p class="muted">
+          Мы можем изменять условия Соглашения. Продолжение использования Приложения означает согласие с обновлёнными условиями.
+        </p>
+
+        <div class="divider"></div>
+
+        <h2>8. Контакты</h2>
+        <p class="muted">По вопросам, связанным с условиями использования:</p>
+        <p>
+          Email:
+          <a href="mailto:developtonyt@icloud.com">developtonyt@icloud.com</a>
+        </p>
+
+        <footer>
+          © «В Эфире» — Пользовательское соглашение
+        </footer>
+      </div>
     </div>
   </div>
+
+  <script>
+    function setLang(lang) {
+      document.querySelectorAll('.lang-content').forEach(el => {
+        el.style.display = el.getAttribute('lang') === lang ? 'block' : 'none';
+      });
+      
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.innerText.toLowerCase() === lang);
+      });
+
+      document.documentElement.lang = lang;
+      
+      // Обновляем title страницы в зависимости от языка
+      if (lang === 'ru') {
+        document.title = "Пользовательское соглашение — В Эфире";
+      } else {
+        document.title = "Terms of Service — EasyFame";
+      }
+    }
+  </script>
 </body>
 </html>
